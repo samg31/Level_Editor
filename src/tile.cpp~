@@ -1,0 +1,6 @@
+#include "tile.hpp"
+
+int Tile::getWidth() const
+{
+    return Width;
+}

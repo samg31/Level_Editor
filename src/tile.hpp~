@@ -1,0 +1,11 @@
+#include "SDL.h"
+
+class Tile
+{
+public:
+    Tile();
+    int getWidth() const;
+private:
+    int Width;
+    SDL_Surface* image;
+};

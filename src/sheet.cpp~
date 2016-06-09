@@ -1,0 +1,16 @@
+#include "sheet.hpp"
+
+void Sheet::load_image()
+{
+    SpriteSheet = SDL_LoadBMP("../img/tile.bmp");
+}
+
+Sheet::~Sheet()
+{
+    SDL_FreeSurface(SpriteSheet);
+}
+
+SDL_Surface* Sheet::getSheet()
+{
+    return SpriteSheet;
+}

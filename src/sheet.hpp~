@@ -1,0 +1,11 @@
+#include "SDL.h"
+
+class Sheet
+{
+public:
+    void load_image();
+    SDL_Surface* getSheet();
+    ~Sheet();
+private:
+    SDL_Surface* SpriteSheet;
+};
