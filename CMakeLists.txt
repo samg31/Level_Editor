@@ -2,11 +2,15 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(sdl2test)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lSDL2_image")
 
-ADD_EXECUTABLE(sdl2test ../src/main.cpp ../src/sheet.cpp ../src/tile.cpp)
+ADD_EXECUTABLE(sdl2test ../src/main.cpp ../src/sheet.cpp ../src/tile.cpp ../src/mouse_logic.cpp
+			../src/globals.cpp)
 
 INCLUDE(FindPkgConfig)
+
 PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
-INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(sdl2test ${SDL2_LIBRARIES})
+PKG_SEARCH_MODULE(SDL2 IMAGE REQUIRED SDL2_image>=2.0.0)
+
+INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(sdl2test ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBARIES})
