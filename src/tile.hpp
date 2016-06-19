@@ -1,3 +1,6 @@
+#ifndef TILE_HPP
+#define TILE_HPP
+
 #include "SDL.h"
 
 class Tile
@@ -13,3 +16,5 @@ public:
     // have 4 pieces.
     int pieces;
 };
+
+#endif

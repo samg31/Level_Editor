@@ -1,4 +1,5 @@
 #include "sheet.hpp"
+#include "globals.hpp"
 #include <ctype.h>
 #include <cmath>
 #include <cassert>
@@ -12,8 +13,11 @@ void Sheet::load_image( std::string path )
 {
     // SpriteSheet = SDL_LoadBMP( path.c_str() );
     Tile* tile = new Tile;
-    tile->image = SDL_LoadBMP( path.c_str() );
-
+    tile->image = IMG_Load( path.c_str() );
+    SDL_Surface* optimized_surface =
+    	SDL_ConvertSurface( tile->image, gScreenSurface->format, 0 );
+    tile->image = optimized_surface;
+    
     //assure that the size is a power of 2
     // assert( isdigit( log2( tile->image->w ) ) );
     //assure tile is square

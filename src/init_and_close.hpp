@@ -1,4 +1,8 @@
+#ifndef INIT_AND_CLOSE_HPP
+#define INIT_AND_CLOSE_HPP
+
 #include "SDL.h"
+#include "SDL_image.h"
 
 bool init()
 {
@@ -15,7 +19,13 @@ bool init()
 	    success = false;
 	else
 	{
-	    gScreenSurface = SDL_GetWindowSurface( gWindow );
+	    int imgFlags = IMG_INIT_PNG;
+	    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+		success = false;
+	    else
+	    {
+		gScreenSurface = SDL_GetWindowSurface( gWindow );
+	    }
 	}
     }
 
@@ -27,3 +37,5 @@ void close()
     SDL_DestroyWindow( gWindow );
     SDL_Quit();
 }
+
+#endif

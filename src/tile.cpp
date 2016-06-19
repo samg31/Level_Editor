@@ -1,7 +1,7 @@
 #include "tile.hpp"
 
 Tile::Tile()
-    :selected(), image(), pieces()
+    :image(), pieces()
 {
 }
 
